@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wfiappkotlin.R
 import com.example.wfiappkotlin.databinding.FragmentInstituteListBinding
 
@@ -17,6 +18,12 @@ class InstituteListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentInstituteListBinding.inflate(inflater)
+
+        binding.recyclerView.apply {
+            adapter = InstituteAdapter()
+            layoutManager = LinearLayoutManager(this@InstituteListFragment.requireContext())
+        }
+
         return binding.root
     }
 }
