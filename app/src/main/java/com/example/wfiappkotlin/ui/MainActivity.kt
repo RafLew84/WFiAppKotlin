@@ -1,4 +1,4 @@
-package com.example.wfiappkotlin
+package com.example.wfiappkotlin.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
