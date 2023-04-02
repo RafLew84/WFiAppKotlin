@@ -2,6 +2,7 @@ package com.example.wfiappkotlin.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.wfiappkotlin.data.DataProvider
 import com.example.wfiappkotlin.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -10,5 +11,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        DataProvider.getInstituteData(this)
     }
 }
