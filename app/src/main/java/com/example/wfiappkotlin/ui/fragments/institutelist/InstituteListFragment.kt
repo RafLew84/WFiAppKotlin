@@ -5,8 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavDirections
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wfiappkotlin.R
+import com.example.wfiappkotlin.data.Institute
 import com.example.wfiappkotlin.databinding.FragmentInstituteListBinding
 
 class InstituteListFragment : Fragment() {
@@ -20,7 +23,12 @@ class InstituteListFragment : Fragment() {
         binding = FragmentInstituteListBinding.inflate(inflater)
 
         binding.recyclerView.apply {
-            adapter = InstituteAdapter()
+            adapter = InstituteAdapter() {institute ->
+                val action: NavDirections = InstituteListFragmentDirections.actionInstituteListFragmentToInstituteDetailFragment(
+                    institute
+                )
+                findNavController().navigate(action)
+            }
             layoutManager = LinearLayoutManager(this@InstituteListFragment.requireContext())
         }
 

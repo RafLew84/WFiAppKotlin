@@ -8,7 +8,11 @@ import com.example.wfiappkotlin.databinding.RecyclerviewItemBinding
 
 class InstituteViewHolder(
     private val binding: RecyclerviewItemBinding,
-    private val context: Context) : RecyclerView.ViewHolder(binding.root) {
+    private val context: Context,
+    onItemClicked: (Int) -> Unit
+) : RecyclerView.ViewHolder(binding.root) {
+
+    init { itemView.setOnClickListener { onItemClicked(adapterPosition) } }
 
     fun bind(institute: Institute) {
         binding.apply {
