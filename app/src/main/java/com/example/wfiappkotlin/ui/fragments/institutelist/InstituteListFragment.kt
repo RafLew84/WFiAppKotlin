@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wfiappkotlin.R
 import com.example.wfiappkotlin.data.Institute
@@ -22,6 +23,8 @@ class InstituteListFragment : Fragment() {
     ): View {
         binding = FragmentInstituteListBinding.inflate(inflater)
 
+        val gridColumnCount = resources.getInteger(R.integer.grid_column_count)
+
         binding.recyclerView.apply {
             adapter = InstituteAdapter() {institute ->
                 val action: NavDirections = InstituteListFragmentDirections.actionInstituteListFragmentToInstituteDetailFragment(
@@ -29,7 +32,8 @@ class InstituteListFragment : Fragment() {
                 )
                 findNavController().navigate(action)
             }
-            layoutManager = LinearLayoutManager(this@InstituteListFragment.requireContext())
+            //layoutManager = LinearLayoutManager(this@InstituteListFragment.requireContext())
+            layoutManager = GridLayoutManager(this@InstituteListFragment.requireContext(), gridColumnCount)
         }
 
         return binding.root
