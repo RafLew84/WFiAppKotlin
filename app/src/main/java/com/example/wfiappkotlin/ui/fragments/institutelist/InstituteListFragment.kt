@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wfiappkotlin.R
 import com.example.wfiappkotlin.data.DataProvider.institutes
+import com.example.wfiappkotlin.data.Institute
 import com.example.wfiappkotlin.databinding.FragmentInstituteListBinding
 import java.util.*
 
@@ -47,16 +48,18 @@ class InstituteListFragment : Fragment() {
         gridColumnCount: Int
     ) {
         recyclerView.apply {
-            adapter = InstituteAdapter() { institute ->
-                val action: NavDirections =
-                    InstituteListFragmentDirections.actionInstituteListFragmentToInstituteDetailFragment(
-                        institute
-                    )
-                findNavController().navigate(action)
-            }
+            adapter = InstituteAdapter { institute -> navigate(institute) }
             layoutManager =
                 GridLayoutManager(this@InstituteListFragment.requireContext(), gridColumnCount)
         }
+    }
+
+    private fun RecyclerView.navigate(institute: Institute) {
+        val action: NavDirections =
+            InstituteListFragmentDirections.actionInstituteListFragmentToInstituteDetailFragment(
+                institute
+            )
+        findNavController().navigate(action)
     }
 
     private fun attachItemTouchHelperToRecyclerView(
