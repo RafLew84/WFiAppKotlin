@@ -38,5 +38,6 @@ class InstituteDetailFragment : Fragment() {
             .into(binding.instituteImageDetail)
 
         binding.titleDetail.text = currentInstitute?.title
+        binding.universityTitleDetail.text = currentInstitute?.info
     }
 }
